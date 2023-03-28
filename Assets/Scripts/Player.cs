@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        TouchInput();
-       // xInput = Input.GetAxis("Horizontal"); // X movement
+        // TouchInput(); // mouse control
+        xInput = Input.GetAxis("Horizontal"); // X movement
 
         transform.Translate(xInput * doodgeSpeed * Time.deltaTime, 0, 0); //Time.deltaTime we need, so that they do not depend on the power
                                                                           //of the computer
@@ -31,14 +31,20 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(limitedx, transform.position.y, transform.position.z);
     }
 
-    void TouchInput()
+
+
+    /// <summary>
+    /// Mouse touch control
+    /// </summary>
+    /// <param name="col"></param>
+  /*  void TouchInput()
     {
 
         if (Input.GetMouseButton(0))
         {
 
             Vector3 touchPos = Input.mousePosition;
-
+                                                       
             float middle = Screen.width / 2;
             if(touchPos.x < middle)
             {
@@ -52,6 +58,7 @@ public class Player : MonoBehaviour
         }
 
     }
+  */
 
     private void OnTriggerEnter(Collider col)
     {

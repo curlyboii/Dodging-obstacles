@@ -13,20 +13,44 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       xInput = Input.GetAxis("Horizontal"); // X movement
 
-        transform.Translate(xInput * doodgeSpeed * Time.deltaTime,0,0); //Time.deltaTime we need, so that they do not depend on the power
-                                                                        //of the computer
+        TouchInput();
+       // xInput = Input.GetAxis("Horizontal"); // X movement
 
-      float limitedx =  Mathf.Clamp(transform.position.x, -maxXDirection, maxXDirection);// limitetion X position, MathF 
+        transform.Translate(xInput * doodgeSpeed * Time.deltaTime, 0, 0); //Time.deltaTime we need, so that they do not depend on the power
+                                                                          //of the computer
 
-      transform.position = new Vector3(limitedx, transform.position.y, transform.position.z);
+        float limitedx = Mathf.Clamp(transform.position.x, -maxXDirection, maxXDirection);// limitetion X position, MathF 
+
+        transform.position = new Vector3(limitedx, transform.position.y, transform.position.z);
+    }
+
+    void TouchInput()
+    {
+
+        if (Input.GetMouseButton(0))
+        {
+
+            Vector3 touchPos = Input.mousePosition;
+
+            float middle = Screen.width / 2;
+            if(touchPos.x < middle)
+            {
+                xInput = -1;
+            }
+            else if (touchPos.x > middle)
+            {
+                xInput = 1;
+            }
+        
+        }
+
     }
 
     private void OnTriggerEnter(Collider col)

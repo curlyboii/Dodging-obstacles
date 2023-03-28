@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Transform spawnPoint;
     public float maxSpawnPointX; // spawn enemy X position
 
+    bool gameStarted = false;
     int score = 0;
 
     public Text scoreText;
@@ -42,13 +43,25 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("SpawnEnemies");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (Input.anyKeyDown && !gameStarted) // if you press any key, game just started
+        {
+
+            scoreText.gameObject.SetActive(true);
+
+
+            StartCoroutine("SpawnEnemies");
+            gameStarted = true;
+
+        }
+
+
     }
 
 

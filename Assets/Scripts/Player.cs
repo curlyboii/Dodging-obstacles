@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        TouchInput(); // mouse control
-       // xInput = Input.GetAxis("Horizontal"); // X movement
+       TouchInput(); // mouse control
+      // xInput = Input.GetAxis("Horizontal"); // X movement
 
         transform.Translate(xInput * doodgeSpeed * Time.deltaTime, 0, 0); //Time.deltaTime we need, so that they do not depend on the power
                                                                           //of the computer

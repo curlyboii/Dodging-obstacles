@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemy;
     public Transform spawnPoint;
     public float maxSpawnPointX; // spawn enemy X position
+    public GameObject menuPanel;
 
     bool gameStarted = false;
     int score = 0;
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.anyKeyDown && !gameStarted) // if you press any key, game just started
         {
-
+            menuPanel.SetActive(false);
             scoreText.gameObject.SetActive(true);
 
 

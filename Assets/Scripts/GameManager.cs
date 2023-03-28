@@ -14,8 +14,10 @@ public class GameManager : MonoBehaviour
 
     bool gameStarted = false;
     int score = 0;
+    int highScore = 0;
 
     public Text scoreText;
+    public Text highScoreText;
 
 
     public static GameManager instance; // By declaring a public static variable called "Instance," we can access
@@ -44,6 +46,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        if (PlayerPrefs.HasKey("highScore"))
+        {
+
+            highScore = PlayerPrefs.GetInt("highScore");
+            highScoreText.text = "High score: " + highScore.ToString();
+        }
         
     }
 
@@ -100,7 +109,14 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        if (score > highScore)
+        { 
+        
+            highScore= score;
 
+            PlayerPrefs.SetInt("highScore", highScore);
+        
+        }
         SceneManager.LoadScene(0);
     
     }

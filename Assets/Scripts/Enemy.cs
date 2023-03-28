@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Enemy : MonoBehaviour
 {
@@ -21,9 +22,10 @@ public class Enemy : MonoBehaviour
 
         if (transform.position.z < -10f)
         { 
-        
-            Destroy(gameObject);
+            
+            GameManager.instance.ScoreUp();
 
+            Destroy(gameObject);
         }
         
     }

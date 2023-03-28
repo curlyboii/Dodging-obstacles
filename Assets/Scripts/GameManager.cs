@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class GameManager : MonoBehaviour
     public GameObject enemy;
     public Transform spawnPoint;
     public float maxSpawnPointX; // spawn enemy X position
+
+    int score = 0;
+
+    public Text scoreText;
 
 
     public static GameManager instance; // By declaring a public static variable called "Instance," we can access
@@ -83,6 +88,14 @@ public class GameManager : MonoBehaviour
     {
 
         SceneManager.LoadScene(0);
+    
+    }
+
+    public void ScoreUp()
+    {
+
+        score++;
+        scoreText.text = score.ToString();
     
     }
 }
